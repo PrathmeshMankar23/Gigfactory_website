@@ -1,36 +1,54 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
 const Services = () => {
+  const router = useRouter()
+
   const services = [
     {
-      icon: '🏗️',
-      title: 'BIM Modeling',
-      description: 'Comprehensive Building Information Modeling services for accurate project visualization and planning.'
+      id: '2d',
+      title: '2D',
+      image: '/assets/2d.png',
+      description: 'Our team delivers clear, technically accurate drawings and documentation that serve as the foundation for successful construction projects.',
     },
     {
-      icon: '📐',
-      title: 'Architectural Design',
-      description: 'Innovative architectural solutions combining aesthetics with functionality and sustainability.'
+      id: '3d',
+      title: '3D',
+      image: '/assets/3d.png',
+      description: 'Advanced 3D modeling and visualization services that bring your construction projects to life before breaking ground.',
     },
     {
-      icon: '🔧',
-      title: 'Engineering Services',
-      description: 'Structural, MEP, and civil engineering solutions for complex construction projects.'
+      id: '4d',
+      title: '4D',
+      image: '/assets/4d.png',
+      description: '4D simulation services that integrate time as the fourth dimension, enabling you to visualize and optimize construction sequences.',
     },
     {
-      icon: '📊',
-      title: 'Project Management',
-      description: 'End-to-end project management ensuring timely delivery within budget and quality standards.'
+      id: 'pp-c',
+      title: 'PP&C',
+      image: '/assets/pp&c.png',
+      description: 'Comprehensive Project Planning and Control services that ensure your construction projects are properly planned and controlled.',
     },
     {
-      icon: '🏢',
-      title: 'Construction Planning',
-      description: 'Strategic construction planning with advanced scheduling and resource optimization.'
+      id: 'boq',
+      title: 'BOQ',
+      image: '/assets/boq.png',
+      description: 'Accurate Bill of Quantities and Quantity Intelligence services that provide precise measurement and cost estimation.',
     },
     {
-      icon: '💻',
-      title: 'Digital Solutions',
-      description: 'Cutting-edge digital tools and platforms for modern construction management.'
+      id: 'audit',
+      title: 'Audit',
+      image: '/assets/audit.png',
+      description: 'Comprehensive Audit and Verification services that ensure compliance, quality, and accuracy throughout construction phases.',
     }
   ]
+
+  const handleServiceClick = (service) => {
+    // Navigate to details page with hash for direct jump
+    const serviceId = service.id.toLowerCase().replace(/\s+/g, '-')
+    router.push(`/services-details#${serviceId}`)
+  }
 
   return (
     <section className="services-section">
@@ -45,9 +63,13 @@ const Services = () => {
         
         <div className="services-grid">
           {services.map((service, index) => (
-            <div key={index} className="service-card">
+            <div key={index} className="service-card" onClick={() => handleServiceClick(service)}>
               <div className="service-icon">
-                <span className="service-icon-emoji">{service.icon}</span>
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="service-icon-image"
+                />
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
@@ -55,10 +77,11 @@ const Services = () => {
           ))}
         </div>
 
+        {/* CTA Button */}
         <div className="services-cta">
-          <a href="#contact" className="services-cta-button">
-            <span>Have a project in mind? Let's talk →</span>
-          </a>
+          <button className="services-button">
+            Explore All Services →
+          </button>
         </div>
       </div>
     </section>

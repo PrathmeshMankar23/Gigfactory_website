@@ -12,7 +12,7 @@ const Lifecycle = () => {
       id: 1,
       name: 'Initiation',
       image: '/assets/initiation.png',
-      description: 'Feasibility & concept phase planning',
+      description: 'Feasibility  &  concept  phase  planning',
       outputs: ['Project requirements', 'Stakeholder analysis', 'Initial scope definition']
     },
     {
@@ -50,9 +50,17 @@ const Lifecycle = () => {
     setActiveStage(activeStage === stageId ? null : stageId);
   }
 
+  const handleStageHover = (stageId) => {
+    setHoveredStage(stageId);
+  }
+
+  const handleStageLeave = () => {
+    setHoveredStage(null);
+  }
+
   const shouldShowDescription = (stageId) => {
-    const shouldShow = activeStage === stageId;
-    console.log('Should show description for stage', stageId, ':', shouldShow, 'Active stage:', activeStage);
+    const shouldShow = activeStage === stageId || hoveredStage === stageId;
+    console.log('Should show description for stage', stageId, ':', shouldShow, 'Active stage:', activeStage, 'Hovered stage:', hoveredStage);
     return shouldShow;
   }
 
@@ -75,11 +83,12 @@ const Lifecycle = () => {
                   <button
                     className={`stage-circle ${activeStage === stage.id ? 'active' : ''}`}
                     onClick={() => handleStageClick(stage.id)}
+                    onMouseEnter={() => handleStageHover(stage.id)}
+                    onMouseLeave={handleStageLeave}
                   >
-                    <span className="stage-number">{stage.id}</span>
                     <img src={stage.image} alt={stage.name} className="stage-image" />
                   </button>
-                  <div className="stage-name">{stage.name}</div>
+                  <div className="stage-name">{stage.id}. {stage.name}</div>
                   
                   {/* Description Box - Positioned below each circle */}
                   {shouldShowDescription(stage.id) && (

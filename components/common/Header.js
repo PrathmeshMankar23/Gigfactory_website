@@ -18,9 +18,54 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <div className="header-content">
+    <header className="navbar">
+      {/* Header Test with CSS Classes */}
+      <div className="header-test">
+        {/* Logo with CSS Classes */}
+        <div className="logo-wrapper">
+          <div className="logo-content">
+            <div className="logo-text-container">
+              <div className="logo-main-text">
+                <span className="logo-gig">Gig</span>
+                <span className="logo-factory">factory</span>
+                {/* Flags */}
+                <div className="flags-container">
+                  {/* India Flag */}
+                  <svg className="flag" viewBox="0 0 24 16" fill="none">
+                    <rect width="24" height="16" fill="#FF9933"/>
+                    <rect y="5.33" width="24" height="5.33" fill="white"/>
+                    <rect y="10.67" width="24" height="5.33" fill="#138808"/>
+                    <circle cx="12" cy="8" r="2" fill="#000080"/>
+                  </svg>
+                  {/* UK Flag */}
+                  <svg className="flag" viewBox="0 0 24 16" fill="none">
+                    <rect width="24" height="16" fill="#012169"/>
+                    <path d="M0 0L24 16M24 0L0 16" stroke="white" strokeWidth="2.67"/>
+                    <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" strokeWidth="1.33"/>
+                    <path d="M12 0V16M0 8H24" stroke="white" strokeWidth="4"/>
+                    <path d="M12 0V16M0 8H24" stroke="#C8102E" strokeWidth="2.67"/>
+                  </svg>
+                </div>
+              </div>
+              <div className="logo-tagline">
+                TECHNOLOGY ENABLED PLATFORM
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation with CSS Classes */}
+        <div className="nav-test">
+          <a href="#" className="nav-test-link">Home</a>
+          <a href="#case-studies" className="nav-test-link">Case Studies</a>
+          <a href="#expertise" className="nav-test-link">Our Expertise</a>
+          <a href="#projects" className="nav-test-link">Projects</a>
+          <a href="#login" className="nav-test-link">Login</a>
+        </div>
+      </div>
+
+      <div className="navbar-container">
+        <div className="navbar-content">
           {/* Logo Section */}
           <div className="logo-container">
             <div className="logo-text">
@@ -46,26 +91,23 @@ const Header = () => {
                 </div>
               </div>
               <div className="logo-tagline">
-                TECHNOLOGY ENABLE PLATFORM
+                Technology Enabled Platform
               </div>
             </div>
           </div>
 
-          {/* Navigation Section */}
-          <div style={{display: 'flex', alignItems: 'center', marginLeft: '40px', gap: '20px'}}>
-            <a href="#" style={{padding: '8px 16px', border: '2px solid black', background: 'white', textDecoration: 'none', color: 'black'}}>Home</a>
-            <a href="#case-studies" style={{padding: '8px 16px', border: '2px solid black', background: 'white', textDecoration: 'none', color: 'black'}}>Case Studies</a>
-            <a href="#expertise" style={{padding: '8px 16px', border: '2px solid black', background: 'white', textDecoration: 'none', color: 'black'}}>Our Expertise</a>
-            <a href="#projects" style={{padding: '8px 16px', border: '2px solid black', background: 'white', textDecoration: 'none', color: 'black'}}>Projects</a>
-            <a href="#login" style={{padding: '8px 16px', border: '2px solid black', background: 'white', textDecoration: 'none', color: 'black'}}>Login</a>
-          </div>
-
-          {/* DEBUG: Simple test navigation */}
-          <div style={{display: 'flex', gap: '20px', marginLeft: '40px'}}>
-            <button style={{padding: '8px 16px', border: '2px solid black', background: 'white'}}>Test 1</button>
-            <button style={{padding: '8px 16px', border: '2px solid black', background: 'white'}}>Test 2</button>
-            <button style={{padding: '8px 16px', border: '2px solid black', background: 'white'}}>Test 3</button>
-          </div>
+          {/* Desktop Navigation */}
+          <nav className="nav-list">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`nav-link ${item.active ? 'active' : ''}`}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
 
           {/* Mobile Menu Button */}
           <button
@@ -74,7 +116,8 @@ const Header = () => {
             aria-label="Toggle mobile menu"
           >
             <svg
-              style={{ width: '24px', height: '24px' }}
+              width="24"
+              height="24"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

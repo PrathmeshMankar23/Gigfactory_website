@@ -10,21 +10,7 @@ import CaseStudies from '../components/common/CaseStudies'
 import Sitemap from '../components/common/Sitemap'
 
 const Home = () => {
-  const services = [
-    {
-      title: 'Web Development',
-      description: 'Custom websites built with modern technologies and best practices.'
-    },
-    {
-      title: 'Digital Solutions',
-      description: 'Comprehensive digital strategies to grow your online presence.'
-    },
-    {
-      title: 'Consulting',
-      description: 'Expert advice to help you make the right technology choices.'
-    }
-  ]
-
+  
   return (
     <main>
       {/* Hero Section */}
